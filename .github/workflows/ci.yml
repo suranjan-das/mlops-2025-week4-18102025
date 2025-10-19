@@ -61,11 +61,12 @@ jobs:
 
       - name: Post evaluation report as PR comment (CML)
         uses: iterative/setup-cml@v1
+        name:
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          run: |
-            echo "# CML report" >> report.md
-            cml comment create report.md
+        run: |
+          echo "# CML report" >> report.md
+          cml comment create report.md
             
       - name: Upload test report artifact
         uses: actions/upload-artifact@v4
