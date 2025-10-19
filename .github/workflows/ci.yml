@@ -60,7 +60,7 @@ jobs:
           cat report.md
 
       - name: Post evaluation report as PR comment (CML)
-        uses: iterative/setup-cml@v2
+        uses: iterative/setup-cml@v1
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           run: |
