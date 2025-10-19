@@ -50,7 +50,7 @@ jobs:
 
       - name: Run pytest
         run: |
-	  echo "## ✅ Pytest Report" > report.md
+          echo "## ✅ Pytest Report" > report.md
           pytest -v --maxfail=1 --disable-warnings >> report.md
 
       - name: Run evaluation script (writes report.md)
@@ -63,5 +63,5 @@ jobs:
         uses: iterative/setup-cml@v2
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-	run: |
-	  cml comment create --publish report.md
+          run: |
+            cml comment create --publish report.md
