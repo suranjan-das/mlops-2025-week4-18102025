@@ -59,7 +59,6 @@ jobs:
           cat report.md || true
 
       - name: Post evaluation report as PR comment (CML)
-        if: github.event_name == 'pull_request'
         uses: iterative/setup-cml@v2
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
