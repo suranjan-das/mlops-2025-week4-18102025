@@ -55,6 +55,7 @@ def main():
     with open(REPORT_PATH, "w") as f:
         f.write("\n".join(md))
 
+    print(f"Evaluation report: {"\n".join(md)}")
     print(f"Evaluation accuracy: {acc:.4f}")
     print(f"Report written to {REPORT_PATH}")
     sys.exit(exit_code)
