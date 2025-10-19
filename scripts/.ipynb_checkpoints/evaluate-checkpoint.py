@@ -8,7 +8,7 @@ from joblib import load
 # Paths (adjust if your files are elsewhere)
 DATA_PATH = os.environ.get("IRIS_CSV_PATH", "data/iris.csv")
 MODEL_PATH = os.environ.get("MODEL_PATH", "model/model.joblib")
-REPORT_PATH = os.environ.get("REPORT_PATH", "evaluation.txt")
+REPORT_PATH = os.environ.get("REPORT_PATH", "report.md")
 ACCURACY_THRESHOLD = float(os.environ.get("ACCURACY_THRESHOLD", "0.9"))
 
 def load_data(path):

@@ -58,7 +58,7 @@ jobs:
       - name: Run evaluation script
         run: |
           echo "-----" > evaluation.txt
-          python scripts/evaluate.py || true >> evaluation.txt
+          python scripts/evaluate.py >> evaluation.txt 2>&1 || true
       - name: Create CML report
         env:
           REPO_TOKEN: ${{ secrets.CML_REPO_TOKEN }}
