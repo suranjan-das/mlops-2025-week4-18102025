@@ -44,7 +44,7 @@ jobs:
           credentials_json: ${{ secrets.GCP_SA_KEY }}
           
       - name: Post evaluation report as PR comment (CML)
-        uses: iterative/setup-cml@v1
+        uses: iterative/setup-cml@v2
       - name: DVC pull artifacts from GCS remote
         run: |
           # If the repo contains .dvc/config with remote pointing to gs://..., dvc pull will use gcloud auth
@@ -52,17 +52,19 @@ jobs:
 
       - name: Run pytest
         run: |
-          echo "## ✅ Pytest Report" > report.md
-          pytest -v --maxfail=1 --disable-warnings >> report.md
+          echo "## ✅ Pytest Report" > test.txt
+          pytest -v --maxfail=1 --disable-warnings >> test.txt
 
       - name: Run evaluation script (writes report.md)
         run: |
           python scripts/evaluate.py || true
-          echo "-----" >> report.md
-          cat report.md
+          echo "-----" > evaluation.txt
+          cat evaluation.txt
       - name: Create CML report
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          echo "# CML report" >> report.md
-          cml comment create report.md
+          echo "# CML report" > report.md
+          cat test.txt >> report.md
+          cat evaluation.txt >> report.md
+          cml comment create --publish report.md
