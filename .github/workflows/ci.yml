@@ -62,7 +62,7 @@ jobs:
           cat evaluation.txt
       - name: Create CML report
         env:
-          REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO_TOKEN: ${{ secrets.CML_REPO_TOKEN }}
         run: |
           echo "# CML report" > report.md
           cat test.txt >> report.md
