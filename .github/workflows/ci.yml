@@ -55,11 +55,10 @@ jobs:
           echo "## ✅ Pytest Report" > test.txt
           pytest -v --maxfail=1 --disable-warnings >> test.txt
 
-      - name: Run evaluation script (writes report.md)
+      - name: Run evaluation script
         run: |
-          python scripts/evaluate.py || true
           echo "-----" > evaluation.txt
-          cat evaluation.txt
+          python scripts/evaluate.py || true >> evaluation.txt
       - name: Create CML report
         env:
           REPO_TOKEN: ${{ secrets.CML_REPO_TOKEN }}
