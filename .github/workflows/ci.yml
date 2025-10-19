@@ -65,3 +65,10 @@ jobs:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           run: |
             cml comment create --publish report.md
+            
+      - name: Upload test report artifact
+      - uses: actions/upload-artifact@v4
+        with:
+          name: iris-ci-report
+          path: report.md
+
