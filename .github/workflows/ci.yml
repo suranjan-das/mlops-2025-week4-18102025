@@ -39,7 +39,6 @@ jobs:
           pip install -r requirements.txt
 
       - name: Setup GCP auth (service account)
-        if: ${{ secrets.GCP_SA_KEY != '' }}
         uses: google-github-actions/auth@v1
         with:
           credentials_json: ${{ secrets.GCP_SA_KEY }}
